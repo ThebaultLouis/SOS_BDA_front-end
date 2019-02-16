@@ -83,9 +83,12 @@
             </div>
           </v-textarea>
         </v-flex>
+        <v-flex xs12>
+          <vue-recaptcha @verify="onVerify" sitekey="6Ld56pEUAAAAAHczZamd_EsRKT_c2pof14wy5FGY"></vue-recaptcha>
+        </v-flex>
       </v-container>
 
-      <v-btn block :disabled="!valid" color="#2D9CDB" @click="submit()">
+      <v-btn block :disabled="!valid || !captchaValid" color="#2D9CDB" @click="submit()">
         {{loading ? 'Votre commande est en cours': 'Commander'}}
         <i v-if="loading" class="ml-5 fas fa-spin fa-spinner"></i>
       </v-btn>
@@ -96,7 +99,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import axios from 'axios'
-
+import VueRecaptcha from 'vue-recaptcha';
 
 export default {
   computed: {
@@ -109,6 +112,8 @@ export default {
   },
   data: () => ({
     valid: false,
+    captchaValid: false,
+    captchaResult: '',
     prenom: '',
     loading: false,
     prenomRules: [
@@ -129,10 +134,17 @@ export default {
     detail: '',
     detailRules: []
   }),
+  components: {
+    VueRecaptcha
+  },
   methods: {
     ...mapActions([
       'removeProduct',
     ]),
+    onVerify(r) {
+      this.captchaResult = r
+      this.captchaValid = true
+    },
     hasProduct() {
       return this.getProductsInCart.length > 0;
     },
@@ -151,6 +163,7 @@ export default {
         numero: this.numero,
         adresse: this.adresse,
         details: this.detail,
+        captcha: this.captchaResult,
         articles: []
       }
 
