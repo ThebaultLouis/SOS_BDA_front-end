@@ -15,7 +15,7 @@
     <btn btnColor="btn btn-small btn-info btn-popup"
     :cartIcon="true"
     @click.native="checkout()">
-    Cart
+    Panier
     <span class="btn-circle" v-if="hasProduct()">
       {{ getProductsInCart.length }}
     </span>

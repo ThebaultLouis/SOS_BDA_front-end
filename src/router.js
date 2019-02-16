@@ -1,9 +1,10 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import AllProducts from '@/components/AllProducts';
-import CartCheckout from '@/components/CartCheckout';
+import Vue from 'vue'
+import Router from 'vue-router'
+import AllProducts from '@/components/AllProducts'
+import CartCheckout from '@/components/CartCheckout'
+import Confirmation from '@/views/Confirmation'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   mode: 'history',
@@ -11,12 +12,17 @@ export default new Router({
     {
       path: '',
       name: 'All Products',
-      component: AllProducts,
+      component: AllProducts
     },
     {
       path: '/checkout',
       name: 'Checkout',
-      component: CartCheckout,
+      component: CartCheckout
     },
-  ],
-});
+    {
+      path: '/confirmation',
+      name: 'Confirmation',
+      component: Confirmation
+    }
+  ]
+})

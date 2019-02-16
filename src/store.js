@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     products: [
       {
-        name: "nourriture",
+        name: "Nourriture",
         image: "/products/nourriture.jpg",
         products: [
           {
@@ -72,7 +72,7 @@ export default new Vuex.Store({
           },
           {
             id: 50,
-            name:"frites",
+            name: "Frites",
             prix: 0,
             image: "/products/frites.jpg",
             saveurs: null
@@ -87,7 +87,7 @@ export default new Vuex.Store({
         ]
       },
       {
-        name: "services",
+        name: "Services",
         image: "/products/service.jpg",
         products: [
           {
