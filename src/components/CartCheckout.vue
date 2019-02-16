@@ -4,7 +4,7 @@
       <transition-group name="fade">
         <li v-for="(product, index) in getProductsInCart" :key="index" class="checkout-product">
           <img :src="product.image" alt="" class="product-image">
-          <h3 class="product-name">{{ product.name }}</h3>
+          <h3 class="product-name">{{ product.name }} {{product.saveur ? product.saveur: ''}}</h3>
           <span>{{ product.prix ? `${product.prix} euros`:'Gratuit' }}</span>
           <button class="product-remove" @click="remove(index)">X</button>
         </li>
@@ -85,7 +85,10 @@
         </v-flex>
       </v-container>
 
-      <v-btn block :disabled="!valid" color="#2D9CDB" @click="submit">Commander</v-btn>
+      <v-btn block :disabled="!valid" color="#2D9CDB" @click="submit()">
+        {{loading ? 'Votre commande est en cours': 'Commander'}}
+        <i v-if="loading" class="ml-5 fas fa-spin fa-spinner"></i>
+      </v-btn>
     </v-form>
   </div>
 </template>
@@ -93,7 +96,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import axios from 'axios'
-import btn from './Btn'
+
 
 export default {
   computed: {
@@ -102,11 +105,12 @@ export default {
     ]),
   },
   components: {
-    btn
+
   },
   data: () => ({
     valid: false,
     prenom: '',
+    loading: false,
     prenomRules: [
       v => !!v || 'Le prénom est requis'
     ],
@@ -140,6 +144,7 @@ export default {
       this.removeProduct(index);
     },
     submit() {
+      this.loading = true;
       let commande = {
         prenom: this.prenom,
         nom: this.nom,
@@ -155,9 +160,11 @@ export default {
 
       axios.post('http://localhost:4242/orders', commande)
         .then(r => {
+          this.loading = false;
           console.log(r)
         })
         .catch(e => {
+          this.loading = false;
           console.log(e)
         })
     }

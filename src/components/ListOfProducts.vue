@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <ul class="listOfProducts">
-    <li v-for="product in products" class="product">
+    <li v-for="product in products" class="product" :key="product.name">
       <h1>{{product.name}}</h1>
       <!-- <a :href="`#${product.name}`">
         <img :src="product.image" alt="">
@@ -9,9 +9,57 @@
       <img :src="product.image" alt="">
     </li>
   </ul>
-    <div :id="product.name" class="" v-for="product in products">
+    <div :id="product.name" class="" v-for="product in products" :key="product.name">
       <h1>{{product.name}}</h1>
       <v-divider></v-divider>
+
+    <v-layout row wrap>
+    <v-flex v-for="(product, index) in product.products" :key="index" xs12 sm3 my-4
+    class="">
+      <v-card>
+        <v-img
+          :src="product.image"
+          aspect-ratio="1.5"
+        ></v-img>
+
+        <v-card-title primary-title>
+          <div>
+            <h3 class="headline mb-0 ">{{ product.name }}</h3>
+            <div class="product-price title" style="text-align:center;">
+              <span>{{ product.prix ? `${product.prix} euros`:'Gratuit' }} </span>
+            </div>
+          </div>
+        </v-card-title>
+        <v-card-content>
+          <v-list v-if="product.saveurs">
+              <v-list-tile
+                v-for="saveur in product.saveurs"
+                :key="saveur.name"
+              >
+                <v-list-tile-content>
+                  <v-list-tile-title v-text="saveur.name"></v-list-tile-title>
+
+                  <btn btnColor="btn btn-large btn-sucess"
+                  :cartIcon="true"
+                  @click.native="addProductToCartFlavour(product, saveur)">
+                  {{saveur.name}}
+                </btn>
+                </v-list-tile-content>
+
+
+              </v-list-tile>
+            </v-list>
+            <btn v-else btnColor="btn btn-large btn-sucess"
+            :cartIcon="true"
+            @click.native="addProductToCart(product)">
+            Add to cart
+          </btn>
+        </v-card-content>
+
+      </v-card>
+    </v-flex>
+  </v-layout>
+
       <ul class="listOfProducts">
         <li v-for="(product, index) in product.products" :key="index" class="product">
           <img :src="product.image" alt="">
@@ -24,11 +72,29 @@
           <span>{{ product.prix ? `${product.prix} euros`:'Gratuit' }} </span>
         </div>
 
-        <btn btnColor="btn btn-large btn-sucess"
+
+      <v-list v-if="product.saveurs">
+          <v-list-tile
+            v-for="saveur in product.saveurs"
+            :key="saveur.name"
+          >
+            <v-list-tile-content>
+              <v-list-tile-title v-text="saveur.name"></v-list-tile-title>
+              <btn btnColor="btn btn-large btn-sucess"
+              :cartIcon="true">
+              {{saveur.name}}
+            </btn>
+            </v-list-tile-content>
+
+
+          </v-list-tile>
+        </v-list>
+        <btn v-else btnColor="btn btn-large btn-sucess"
         :cartIcon="true"
         @click.native="addProductToCart(product)">
         Add to cart
       </btn>
+
     </li>
   </ul>
 
@@ -59,6 +125,16 @@ export default {
     addCurrentProduct(product) {
       this.currentProduct(product);
     },
+    addProductToCartFlavour(product, saveur) {
+
+      this.addProduct({
+        id: saveur.id,
+        name: product.name,
+        image: product.image,
+        prix: product.prix,
+        saveur: saveur.name
+      });
+    }
   },
 };
 </script>

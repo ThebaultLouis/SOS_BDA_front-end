@@ -11,34 +11,78 @@ export default new Vuex.Store({
         image: "/products/nourriture.jpg",
         products: [
           {
+            id: 10,
             name:"Wok au poulet",
             prix: 3,
-            image: "/products/wok_au_poulet.jpeg"
+            image: "/products/wok_au_poulet.jpeg",
+            saveurs: null
           },
           {
+            id: 20,
             name:"Wok végétarien",
             prix: 3,
-            image: "/products/wok_vegetarien.jpeg"
+            image: "/products/wok_vegetarien.jpeg",
+            saveurs: null
           },
           {
             name:"Crêpe",
             prix: 0,
-            image: "/products/crêpe.jpg"
+            image: "/products/crêpe.jpg",
+            saveurs: [
+              {
+                id: 30,
+                name: "nature"
+              },
+              {
+                id: 31,
+                name: "Sucre"
+              },
+              {
+                id: 32,
+                name: "Nutella"
+              },
+              {
+                id: 33,
+                name: "Confiture"
+              }
+            ]
           },
           {
             name:"Gaufre",
             prix: 0,
-            image: "/products/gaufres.jpg"
+            image: "/products/gaufres.jpg",
+            saveurs: [
+              {
+                id: 40,
+                name: "nature"
+              },
+              {
+                id: 41,
+                name: "Sucre"
+              },
+              {
+                id: 42,
+                name: "Nutella"
+              },
+              {
+                id: 43,
+                name: "Confiture"
+              }
+            ]
           },
           {
+            id: 50,
             name:"frites",
             prix: 0,
-            image: "/products/frites.jpg"
+            image: "/products/frites.jpg",
+            saveurs: null
           },
           {
+            id: 60,
             name:"Onion Rings",
             prix: 0,
-            image: "/products/onion-rings.jpg"
+            image: "/products/onion-rings.jpg",
+            saveurs: null
           }
         ]
       },
@@ -47,24 +91,32 @@ export default new Vuex.Store({
         image: "/products/service.jpg",
         products: [
           {
+            id: 70,
             name:"SOS détente",
             prix: 0,
-            image: "/products/detente.jpg"
+            image: "/products/detente.jpg",
+            saveurs: null
           },
           {
+            id: 80,
             name:"SOS Ménage",
             prix: 0,
-            image: "/products/menage.jpg"
+            image: "/products/menage.jpg",
+            saveurs: null
           },
           {
+            id: 90,
             name:"SOS Livraison",
             prix: 0,
-            image: "/products/ubereats.png"
+            image: "/products/ubereats.png",
+            saveurs: null
           },
           {
+            id: 100,
             name:"SOS BugBusters",
             prix: 0,
-            image: "/products/bugBusters.png"
+            image: "/products/bugBusters.png",
+            saveurs: null
           }
         ]
       },
@@ -74,20 +126,32 @@ export default new Vuex.Store({
         products: [
 
           {
+            id: 110,
             name:"L'artiste",
             prix: 0,
-            image: "/products/artiste.jpg"
+            image: "/products/artiste.jpg",
+            saveurs: null
           },
-
           {
+            id: 120,
+            name:"Le gamer",
+            prix: 0,
+            image: "/products/artiste.jpg",
+            saveurs: null
+          },
+          {
+            id: 130,
             name:"Le détective",
             prix: 0,
-            image: "/products/detective.jpg"
+            image: "/products/detective.jpg",
+            saveurs: null
           },
           {
+            id: 140,
             name:"SOS Mystère",
             prix: 0,
-            image: "/products/random.jpg"
+            image: "/products/random.jpg",
+            saveurs: null
           }
         ]
       }
