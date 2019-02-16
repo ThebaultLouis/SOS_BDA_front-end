@@ -145,7 +145,7 @@ export default {
         nom: this.nom,
         numero: this.numero,
         adresse: this.adresse,
-        detail: this.detail,
+        details: this.detail,
         articles: []
       }
 
