@@ -8,8 +8,8 @@
 
 <script>
 export default {
-  props: ['btnColor', 'cartIcon'],
-};
+  props: ['btnColor', 'cartIcon']
+}
 </script>
 
 <style scoped>

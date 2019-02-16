@@ -2,12 +2,12 @@
   <div class="checkout-box">
     <ul class="checkout-list">
       <transition-group name="fade">
-      <li v-for="(product, index) in getProductsInCart" :key="index" class="checkout-product">
-        <img :src="product.image" alt="" class="product-image">
-        <h3 class="product-name">{{ product.name }}</h3>
-        <span>{{ product.prix ? `${product.prix} euros`:'Gratuit' }}</span>
-        <button class="product-remove" @click="remove(index)">X</button>
-      </li>
+        <li v-for="(product, index) in getProductsInCart" :key="index" class="checkout-product">
+          <img :src="product.image" alt="" class="product-image">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <span>{{ product.prix ? `${product.prix} euros`:'Gratuit' }}</span>
+          <button class="product-remove" @click="remove(index)">X</button>
+        </li>
       </transition-group>
     </ul>
     <div v-if="!hasProduct()" class="checkout-message">
@@ -18,80 +18,82 @@
       Total: {{ totalPrice() }} euros
     </h3>
 
-    <v-form v-if="hasProduct()">
+    <v-form v-model="valid" v-if="hasProduct()">
+      <v-container>
+        <v-layout>
+          <v-flex>
+            <v-text-field
+              v-model="prenom"
 
-    <v-container>
-      <v-layout>
-        <v-flex>
-          <v-text-field
-            v-model="prenom"
+              :rules="prenomRules"
+              label="Prénom"
+              required
+            ></v-text-field>
+          </v-flex>
 
-            label="Prénom"
+          <v-flex>
+            <v-text-field
+              v-model="nom"
+
+              :rules="nomRules"
+              label="Nom"
+              required
+            ></v-text-field>
+          </v-flex>
+        </v-layout>
+        <v-layout>
+          <v-flex
+            xs12
+            md6
+          >
+            <v-text-field
+            v-model="numero"
+
+            :rules="numeroRules"
+            label="Numéro de téléphone"
             required
-          ></v-text-field>
-        </v-flex>
+            ></v-text-field>
 
-        <v-flex
+          </v-flex>
+        </v-layout>
+        <v-layout>
+          <v-flex
+            xs12
+            md6
+          >
+            <v-text-field
+            v-model="adresse"
 
-        >
-          <v-text-field
-            v-model="nom"
-
-            label="Nom"
+            :rules="adresseRules"
+            label="Adresse"
             required
-          ></v-text-field>
+            ></v-text-field>
+
+          </v-flex>
+        </v-layout>
+        <v-flex xs12>
+          <v-textarea
+            v-model="detail"
+
+            :rules="detailRules"
+            color="teal"
+          >
+            <div slot="label">
+              Précisez votre commande <small>(Optionnel)</small>
+            </div>
+          </v-textarea>
         </v-flex>
+      </v-container>
 
-      </v-layout>
-      <v-layout>
-        <v-flex
-          xs12
-          md6
-        >
-          <v-text-field
-          v-model="numero"
-          label="Numéro de téléphone"
-          required
-          ></v-text-field>
-
-        </v-flex>
-      </v-layout>
-      <v-layout>
-        <v-flex
-          xs12
-          md6
-        >
-          <v-text-field
-          v-model="email"
-          label="Adresse"
-          required
-          ></v-text-field>
-
-        </v-flex>
-      </v-layout>
-      <v-flex xs12>
-   <v-textarea
-    v-model="detail"
-     color="teal"
-   >
-     <div slot="label">
-       Précisez votre commande <small>(Optionnel)</small>
-     </div>
-   </v-textarea>
- </v-flex>
-    </v-container>
-  </v-form>
-
-    <btn v-if="hasProduct()" btnColor="btn btn-large btn-info"
-        :cartIcon="true">
-      Commander
-    </btn>
+      <v-btn block :disabled="!valid" color="#2D9CDB" @click="submit">Commander</v-btn>
+    </v-form>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-import btn from './Btn';
+import { mapGetters, mapActions } from 'vuex'
+import axios from 'axios'
+import btn from './Btn'
 
 export default {
   computed: {
@@ -102,12 +104,26 @@ export default {
   components: {
     btn
   },
-  data: ({
+  data: () => ({
+    valid: false,
     prenom: '',
+    prenomRules: [
+      v => !!v || 'Le prénom est requis'
+    ],
     nom: '',
+    nomRules: [
+      v => !!v || 'Le nom est requis'
+    ],
     adresse: '',
+    adresseRules: [
+      v => !!v || 'L’adresse est requise'
+    ],
     numero: '',
-    detail: ''
+    numeroRules: [
+      v => !!v || 'Le numéro est requis'
+    ],
+    detail: '',
+    detailRules: []
   }),
   methods: {
     ...mapActions([
@@ -123,8 +139,30 @@ export default {
     remove(index) {
       this.removeProduct(index);
     },
+    submit() {
+      let commande = {
+        prenom: this.prenom,
+        nom: this.nom,
+        numero: this.numero,
+        adresse: this.adresse,
+        detail: this.detail,
+        articles: []
+      }
+
+      for (let article of this.getProductsInCart) {
+        commande.articles.push(article.name)
+      }
+
+      axios.post('http://localhost:4242/orders', commande)
+        .then(r => {
+          console.log(r)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    }
   },
-};
+}
 </script>
 
 <style scoped>
@@ -192,7 +230,7 @@ export default {
   }
 
   .fade-enter-active, .fade-leave-active {
-    transition: all .5s;
+    transition: all .1s;
   }
 
   .fade-enter, .fade-leave-to {
