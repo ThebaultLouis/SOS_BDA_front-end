@@ -1,12 +1,12 @@
 <template>
   <div>
     <div :id="product.name" class="" v-for="product in products" :key="product.name">
-      <h1>{{product.name}}</h1>
+      <h1 class="ml-4">{{product.name}}</h1>
       <v-divider></v-divider>
 
       <v-container grid-list-md>
         <v-layout row wrap>
-          <v-flex xs3 v-for="(product, index) in product.products" :key="index" class="product">
+          <v-flex xs10 offset-xs1 sm4 offset-sm0 v-for="(product, index) in product.products" :key="index" class="product">
             <v-card>
               <v-img
                 :src="product.image"

@@ -184,6 +184,7 @@ export default {
           this.loading = false;
           console.log(e)
         })
+      this.$router.push('/confirmation')
     }
   },
 }

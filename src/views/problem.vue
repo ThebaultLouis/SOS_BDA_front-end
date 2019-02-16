@@ -6,7 +6,9 @@
           <v-card>
             <v-card-title primary-title>
               <div>
-                <h3 class="headline mb-0 text-xs-center" >Un enquêteur a été envoyé pour mener à bien sa mission.</h3>
+                <h3 class="headline mb-0 text-xs-center" >Vous vous êtes perdu sur notre site.</h3>
+                <h3 class="headline mb-0 text-xs-center" >Veuillez revenir à la page d'acceuil</h3>
+
               </div>
             <v-img
               src="/Echarpe.png"
