@@ -49,6 +49,19 @@
           md6
         >
           <v-text-field
+          v-model="numero"
+          label="Numéro de téléphone"
+          required
+          ></v-text-field>
+
+        </v-flex>
+      </v-layout>
+      <v-layout>
+        <v-flex
+          xs12
+          md6
+        >
+          <v-text-field
           v-model="email"
           label="Adresse"
           required
@@ -82,7 +95,8 @@ export default {
   data: ({
     prenom: '',
     nom: '',
-    adresse: ''
+    adresse: '',
+    numero: ''
   }),
   methods: {
     ...mapActions([
