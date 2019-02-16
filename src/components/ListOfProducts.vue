@@ -6,7 +6,7 @@
 
       <v-container grid-list-md>
         <v-layout row wrap>
-          <v-flex xs10 offset-xs1 sm4 offset-sm0 v-for="(product, index) in product.products" :key="index" class="product">
+          <v-flex xs10 offset-xs1 sm3 offset-sm0 v-for="(product, index) in product.products" :key="index" class="product">
             <v-card>
               <v-img
                 :src="product.image"

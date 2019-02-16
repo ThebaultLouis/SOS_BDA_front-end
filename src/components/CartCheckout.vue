@@ -184,7 +184,6 @@ export default {
           this.$router.push({ name: 'Problem' })
           this.loading = false;
         })
-      this.$router.push('/confirmation')
     }
   },
 }
