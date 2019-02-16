@@ -13,53 +13,6 @@
       <h1>{{product.name}}</h1>
       <v-divider></v-divider>
 
-    <v-layout row wrap>
-    <v-flex v-for="(product, index) in product.products" :key="index" xs12 sm3 my-4
-    class="">
-      <v-card>
-        <v-img
-          :src="product.image"
-          aspect-ratio="1.5"
-        ></v-img>
-
-        <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0 ">{{ product.name }}</h3>
-            <div class="product-price title" style="text-align:center;">
-              <span>{{ product.prix ? `${product.prix} euros`:'Gratuit' }} </span>
-            </div>
-          </div>
-        </v-card-title>
-        <v-card-content>
-          <v-list v-if="product.saveurs">
-              <v-list-tile
-                v-for="saveur in product.saveurs"
-                :key="saveur.name"
-              >
-                <v-list-tile-content>
-                  <v-list-tile-title v-text="saveur.name"></v-list-tile-title>
-
-                  <btn btnColor="btn btn-large btn-sucess"
-                  :cartIcon="true"
-                  @click.native="addProductToCartFlavour(product, saveur)">
-                  {{saveur.name}}
-                </btn>
-                </v-list-tile-content>
-
-
-              </v-list-tile>
-            </v-list>
-            <btn v-else btnColor="btn btn-large btn-sucess"
-            :cartIcon="true"
-            @click.native="addProductToCart(product)">
-            Add to cart
-          </btn>
-        </v-card-content>
-
-      </v-card>
-    </v-flex>
-  </v-layout>
-
       <ul class="listOfProducts">
         <li v-for="(product, index) in product.products" :key="index" class="product">
           <img :src="product.image" alt="">
@@ -81,7 +34,8 @@
             <v-list-tile-content>
               <v-list-tile-title v-text="saveur.name"></v-list-tile-title>
               <btn btnColor="btn btn-large btn-sucess"
-              :cartIcon="true">
+              :cartIcon="true"
+              @click.native="addProductToCartFlavour(product, saveur)">
               {{saveur.name}}
             </btn>
             </v-list-tile-content>
@@ -89,11 +43,14 @@
 
           </v-list-tile>
         </v-list>
+        <v-btn v-else block color="secondary" dark @click.native="addProductToCart(product)">
+        Add to cart</v-btn>
+<!-- 
         <btn v-else btnColor="btn btn-large btn-sucess"
         :cartIcon="true"
         @click.native="addProductToCart(product)">
         Add to cart
-      </btn>
+      </btn> -->
 
     </li>
   </ul>

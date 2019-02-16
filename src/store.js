@@ -31,7 +31,7 @@ export default new Vuex.Store({
             saveurs: [
               {
                 id: 30,
-                name: "nature"
+                name: "Nature"
               },
               {
                 id: 31,
@@ -54,7 +54,7 @@ export default new Vuex.Store({
             saveurs: [
               {
                 id: 40,
-                name: "nature"
+                name: "Nature"
               },
               {
                 id: 41,
