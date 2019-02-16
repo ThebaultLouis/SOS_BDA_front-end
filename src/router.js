@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import AllProducts from '@/components/AllProducts'
 import CartCheckout from '@/components/CartCheckout'
 import Confirmation from '@/views/Confirmation'
+import Problem from '@/views/Problem'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/confirmation',
       name: 'Confirmation',
       component: Confirmation
+    },
+    {
+      path: '/problem',
+      name: 'Problem',
+      component: Problem
     }
   ]
 })

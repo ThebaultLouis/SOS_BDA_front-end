@@ -172,17 +172,17 @@ export default {
       }
 
       for (let article of this.getProductsInCart) {
-        commande.articles.push(article.name)
+        commande.articles.push(article.id)
       }
 
       axios.post('http://localhost:4242/orders', commande)
         .then(r => {
-          this.loading = false;
-          console.log(r)
+          this.loading = false
+          this.$router.push({ name: 'Confirmation' })
         })
         .catch(e => {
+          this.$router.push({ name: 'Problem' })
           this.loading = false;
-          console.log(e)
         })
     }
   },
