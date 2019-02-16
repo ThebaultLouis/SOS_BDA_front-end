@@ -5,7 +5,7 @@
       <li v-for="(product, index) in getProductsInCart" :key="index" class="checkout-product">
         <img :src="product.image" alt="" class="product-image">
         <h3 class="product-name">{{ product.name }}</h3>
-        <span>{{ product.price }} euros</span>
+        <span>{{ product.prix ? `${product.prix} euros`:'Gratuit' }}</span>
         <button class="product-remove" @click="remove(index)">X</button>
       </li>
       </transition-group>
@@ -17,6 +17,47 @@
     <h3 class="total" v-if="hasProduct()">
       Total: {{ totalPrice() }} euros
     </h3>
+
+    <v-form v-if="hasProduct()">
+
+    <v-container>
+      <v-layout>
+        <v-flex>
+          <v-text-field
+            v-model="prenom"
+
+            label="Prénom"
+            required
+          ></v-text-field>
+        </v-flex>
+
+        <v-flex
+
+        >
+          <v-text-field
+            v-model="nom"
+
+            label="Nom"
+            required
+          ></v-text-field>
+        </v-flex>
+
+      </v-layout>
+      <v-layout>
+        <v-flex
+          xs12
+          md6
+        >
+          <v-text-field
+          v-model="email"
+          label="Adresse"
+          required
+          ></v-text-field>
+
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-form>
 
     <btn v-if="hasProduct()" btnColor="btn btn-large btn-info"
         :cartIcon="true">
@@ -38,7 +79,11 @@ export default {
   components: {
     btn
   },
-
+  data: ({
+    prenom: '',
+    nom: '',
+    adresse: ''
+  }),
   methods: {
     ...mapActions([
       'removeProduct',
@@ -48,7 +93,7 @@ export default {
     },
     totalPrice() {
       return this.getProductsInCart.reduce((current, next) =>
-        current + next.price, 0);
+        current + next.prix, 0);
     },
     remove(index) {
       this.removeProduct(index);

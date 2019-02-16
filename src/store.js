@@ -7,104 +7,97 @@ export default new Vuex.Store({
   state: {
     products: [
       {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 69
+        name: "nourriture",
+        image: "http://placehold.it/640x640",
+        products: [
+          {
+            name:"Repas de liste",
+            prix: 3,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"Repas de liste végé",
+            prix: 3,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"Crêpe",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"Gaufre",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"frites",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"Onion Ring",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          }
+        ]
       },
       {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 160
+        name: "services",
+        image: "http://placehold.it/640x640",
+        products: [
+          {
+            name:"SOS Proto",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"SOS Ménage",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"SOS Livraison",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"SOS BugBusters",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          }
+        ]
       },
       {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 78
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 80
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 171
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 61
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 109
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 179
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 55
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 146
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 120
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 94
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 102
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 60
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 38
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 163
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 167
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 64
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 68
-      },
-      {
-        'name': 'Crêpe au chocolat',
-        'image': 'http://placehold.it/640x480',
-        'price': 59
+        name: "Jeux",
+        image: "http://placehold.it/640x640",
+        products: [
+          {
+            name:"Le danseur",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"L'artiste",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"Le G@M3R",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"Le détective ",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          },
+          {
+            name:"SOS Mystère",
+            prix: 0,
+            image: "http://placehold.it/640x640"
+          }
+        ]
       }
     ],
 

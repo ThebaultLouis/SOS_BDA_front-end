@@ -10,7 +10,7 @@
 
       </ul>
     </nav> -->
-    <h1 class="title">S.O.S</h1>
+    <h1 class="sos display-2">S.O.S</h1>
 
     <btn btnColor="btn btn-small btn-info btn-popup"
     :cartIcon="true"
@@ -88,14 +88,17 @@ export default {
     align-items: center;
   }
 
-  .title {
+  .sos {
     text-align: center;
     padding: 0;
     margin: auto;
   }
   @media (max-width: 640px) {
-    .title {
+    .sos {
       display: none;
+    }
+    .header {
+      opacity: 0.8
     }
   }
 
