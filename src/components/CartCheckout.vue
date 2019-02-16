@@ -84,7 +84,7 @@
           </v-textarea>
         </v-flex>
         <v-flex xs12>
-          <vue-recaptcha @verify="onVerify" sitekey="6Ld56pEUAAAAAHczZamd_EsRKT_c2pof14wy5FGY"></vue-recaptcha>
+          <vue-recaptcha @verify="onVerify" @expired="onExpired" sitekey="6Ld56pEUAAAAAHczZamd_EsRKT_c2pof14wy5FGY"></vue-recaptcha>
         </v-flex>
       </v-container>
 
@@ -144,6 +144,10 @@ export default {
     onVerify(r) {
       this.captchaResult = r
       this.captchaValid = true
+    },
+    onExpired() {
+      this.captchaValid = false
+      this.captchaResult = ''
     },
     hasProduct() {
       return this.getProductsInCart.length > 0;
