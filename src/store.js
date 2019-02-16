@@ -8,94 +8,86 @@ export default new Vuex.Store({
     products: [
       {
         name: "nourriture",
-        image: "http://placehold.it/640x640",
+        image: "/products/nourriture.jpg",
         products: [
           {
-            name:"Repas de liste",
+            name:"Wok au poulet",
             prix: 3,
-            image: "http://placehold.it/640x640"
+            image: "/products/wok_au_poulet.jpeg"
           },
           {
-            name:"Repas de liste végé",
+            name:"Wok végétarien",
             prix: 3,
-            image: "http://placehold.it/640x640"
+            image: "/products/wok_vegetarien.jpeg"
           },
           {
             name:"Crêpe",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/crêpe.jpg"
           },
           {
             name:"Gaufre",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/gaufres.jpg"
           },
           {
             name:"frites",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/frites.jpg"
           },
           {
-            name:"Onion Ring",
+            name:"Onion Rings",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/onion-rings.jpg"
           }
         ]
       },
       {
         name: "services",
-        image: "http://placehold.it/640x640",
+        image: "/products/service.jpg",
         products: [
           {
-            name:"SOS Proto",
+            name:"SOS détente",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/detente.jpg"
           },
           {
             name:"SOS Ménage",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/menage.jpg"
           },
           {
             name:"SOS Livraison",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/ubereats.png"
           },
           {
             name:"SOS BugBusters",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/bugBusters.png"
           }
         ]
       },
       {
         name: "Jeux",
-        image: "http://placehold.it/640x640",
+        image: "http://placehold.it/360x360",
         products: [
-          {
-            name:"Le danseur",
-            prix: 0,
-            image: "http://placehold.it/640x640"
-          },
+
           {
             name:"L'artiste",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/artiste.jpg"
           },
+
           {
-            name:"Le G@M3R",
+            name:"Le détective",
             prix: 0,
-            image: "http://placehold.it/640x640"
-          },
-          {
-            name:"Le détective ",
-            prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/detective.jpg"
           },
           {
             name:"SOS Mystère",
             prix: 0,
-            image: "http://placehold.it/640x640"
+            image: "/products/random.jpg"
           }
         ]
       }

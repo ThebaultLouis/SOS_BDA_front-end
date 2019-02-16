@@ -69,6 +69,16 @@
 
         </v-flex>
       </v-layout>
+      <v-flex xs12>
+   <v-textarea
+    v-model="detail"
+     color="teal"
+   >
+     <div slot="label">
+       Précisez votre commande <small>(Optionnel)</small>
+     </div>
+   </v-textarea>
+ </v-flex>
     </v-container>
   </v-form>
 
@@ -96,7 +106,8 @@ export default {
     prenom: '',
     nom: '',
     adresse: '',
-    numero: ''
+    numero: '',
+    detail: ''
   }),
   methods: {
     ...mapActions([
