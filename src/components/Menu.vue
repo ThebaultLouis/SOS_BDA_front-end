@@ -29,17 +29,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import mainMenu from '@/components/Menu';
 import btn from '@/components/Btn';
 import popupcart from '@/components/Popupcart';
-import maskBg from '@/components/Mask';
+
 
 export default {
   components: {
-    mainMenu,
     btn,
-    popupcart,
-    maskBg,
+    popupcart
   },
   methods: {
     ...mapActions([
